@@ -3,11 +3,13 @@ import { View, Text } from 'react-native';
 
 import '@walletconnect/react-native-compat'
 import { WagmiProvider } from 'wagmi'
-import { mainnet, polygon, arbitrum } from '@wagmi/core/chains'
+import { mainnet, polygon, arbitrum, sepolia } from '@wagmi/core/chains'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { createAppKit, defaultWagmiConfig, AppKit } from '@reown/appkit-wagmi-react-native'
 
 import { AppKitButton } from '@reown/appkit-wagmi-react-native'
+import ReadContract from '@/src/components/ReadContract';
+import SignMessage from '@/src/components/SignMessage';
 
 // 0. Setup queryClient
 const queryClient = new QueryClient()
@@ -43,17 +45,27 @@ export default function Index() {
   return (
     <WagmiProvider config={wagmiConfig}>
       <QueryClientProvider client={queryClient}>
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-        <Text>Hello.</Text>
-        <AppKitButton balance="show"/>
-    </View>
-    <AppKit />
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Text
+            style={{
+              fontSize: 18,
+              color: 'black',
+              marginBottom: 20,
+            }}
+          >
+            Click below button to connect to a wallet
+          </Text>
+          <AppKitButton balance="show"/>
+          <SignMessage />
+          <ReadContract />
+        </View>
+        <AppKit />
       </QueryClientProvider>
     </WagmiProvider>
   );
