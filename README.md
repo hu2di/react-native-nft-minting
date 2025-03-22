@@ -2,7 +2,7 @@
 React Native Expo app: Connect to wallets, send Sign Message, read Smart Contract information.
 Using Reown Appkit tool.
 
-<img src="screen.jpeg">
+<img src="screen.jpeg" height="720">
 
 ### Get started
 
